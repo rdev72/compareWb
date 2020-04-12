@@ -1,0 +1,8 @@
+<%- include('partials/loggedInHeader') %>
+<form action="/article/edit/<%= article._id %>" method="post">
+    <label>Tittle</label>
+    <input type="text" name="tittle" value='<%= article.tittle %>' required><br>
+    <label>Description</label>
+    <input type="text" name="description" value='<%= article.description %>'><br>
+    <input type="submit" value="UPDATE">
+</form>

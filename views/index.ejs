@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= tittle %></title>
+</head>
+<body>
+    <h3>Articles</h3>
+    <% if(user){ %>
+        <%- include('partials/loggedInHeader') %>
+        <a href="/console">Console</a>
+    <% }else{  %>
+        <%- include('partials/auth') %>
+    <% } %>
+
+    
+    <ol>
+    <% data.forEach(e => { %>
+        <li>
+        <strong><%= e.tittle %></strong>
+        <p><%= e.auther.name %></p>
+        <p><%= e.description %></p>
+        <!-- <button>Edit</button>
+        <button>Delete</button> -->
+        </li>
+    <% }) %>
+    </ol>
+</body>
+</html>
