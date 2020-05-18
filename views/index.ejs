@@ -26,5 +26,19 @@
         </li>
     <% }) %>
     </ol>
+<p><%= getDate('roshan is cool') %></p>
+
+<% if(request){ %>
+    <p>request is here</p>
+    <% request('https://jsonplaceholder.typicode.com/todos/1', (error, response, body) => { %>
+        <% if(error){ %>
+            <p>error is here</p>
+            <% }else {%>
+                <p>body is here</p>
+            <% } %>
+        <%  }) %>
+    <% } %>
+
+
 </body>
 </html>

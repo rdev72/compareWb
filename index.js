@@ -6,6 +6,7 @@ const articleSchema = require('./models/articleSchema');
 const ensureLoggedIn = require('./ensureLoggedIn');
 const auth = require('./routes/auth');
 const article = require('./routes/article');
+const request = require('request');
 
 const port = 3000;
 
@@ -41,12 +42,18 @@ app.use(session({
 }));
 
 //using inherited routes
+
+function getDate(a){
+    console.log(a)
+    return a
+}
+
 app.use('/auth',auth);
 app.use('/article',article);
 
 app.get('/',(req,res)=>{
     articleSchema.find().populate('auther','name -_id').exec()
-    .then(articles => res.render('index',{tittle:'Root', data:articles, user:req.session.user}))
+    .then(articles => res.render('index',{tittle:'Root', data:articles, user:req.session.user, getDate, request}))
     .catch(err => console.log(err))
     
 });
